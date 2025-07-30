@@ -7,6 +7,8 @@ if [[ $EUID -ne 0 ]]; then
 	exit 1
 fi
 
+LOG="/home/pedro-almeida/Documentos/GitHub/linux-automation-scripts/security-system/auditoria_$(date +%Y%m%d_%H%M%S).log"
+
 echo "Iniciando auditoria e atualizacao de seguranca"
 
 echo -e "\n1) Atualizando lista de pacostes..."
@@ -21,7 +23,7 @@ systemctl list-unit-files --type=service | grep enabled
 echo -e "\n4) Servicos ativos no momento:"
 systemctl list-units --type=service --state=running
 
-echo =e "n5) Portas abertas e programas escutando:"
+echo =e "\n5) Portas abertas e programas escutando:"
 ss -tuln
 
 echo -e "\n6) Usuarios com permissoes para login:"
