@@ -1,53 +1,53 @@
 #!/bin/bash
 
-# Primeiro, precisamos verificar se o script esta rodando como root, ou seja, superusuario, para ter as permissoes necessarias.
+# First, we need to check if the script is running as root, i.e., superuser, to have the necessary permissions.
 
 if [[ $EUID -ne 0 ]]; then
-	echo"Por favor, execute este script como sudo ou como root."
+	echo "Please run this script as sudo or as root."
 	exit 1
 fi
 
-LOG="/home/pedro-almeida/Documentos/GitHub/linux-automation-scripts/security-system/auditoria_$(date +%Y%m%d_%H%M%S).log"
+LOG="/home/pedro-almeida/Documentos/GitHub/linux-automation-scripts/security-system/audit_$(date +%Y%m%d_%H%M%S).log"
 
-echo "Iniciando auditoria e atualizacao de seguranca"
+echo "Starting security audit and update"
 
-echo -e "\n1) Atualizando lista de pacostes..."
+echo -e "\n1) Updating package list..."
 apt update -qq
 
-echo -e "\n2) Instalando atualizacoes de seguranca..."
+echo -e "\n2) Installing security updates..."
 unattended-upgrade -d
 
-echo -e "\n3) Servicos habilitados para iniciar com o sistema:"
+echo -e "\n3) Services enabled to start at boot:"
 systemctl list-unit-files --type=service | grep enabled
 
-echo -e "\n4) Servicos ativos no momento:"
+echo -e "\n4) Currently active services:"
 systemctl list-units --type=service --state=running
 
-echo =e "\n5) Portas abertas e programas escutando:"
+echo -e "\n5) Open ports and listening programs:"
 ss -tuln
 
-echo -e "\n6) Usuarios com permissoes para login:"
+echo -e "\n6) Users with login permissions:"
 awk -F: '$7 ~ /(bash|sh)/ { print $1 }' /etc/passwd
 
-echo -e "\n7) Permissoes dos arquivos sensiveis do sistema:"
+echo -e "\n7) Permissions of sensitive system files:"
 ls -l /etc/passwd /etc/shadow /etc/sudoers
 
-echo -e "\n8) Usuarios com privilegios adminisrativos (sudo):"
+echo -e "\n8) Users with administrative privileges (sudo):"
 getent group sudo | cut -d: -f4
 
-echo -e "\n9) Servicos em execucao:"
+echo -e "\n9) Running services:"
 systemctl list-units --type=service --state=running | grep ".service" | awk '{print $1}' | sort
 
-echo -e "\nServicos sensiveis detectados:"
+echo -e "\nSensitive services detected:"
 for servico in ssh apache2 vsftpd telnet samba cups ftp; do
 	if systemctl is-active --quiet "$servico"; then
-		echo "Servico em execucao: $servico"
+		echo "Running service: $servico"
 	fi
 done
 
-echo "[$(date)] Verificando usuários com shell ativo..." | tee -a "$LOG"
+echo "[$(date)] Checking users with active shell..." | tee -a "$LOG"
 
 awk -F: '($7 !~ /nologin|false/) { print $1 ": " $7 }' /etc/passwd | tee -a "$LOG"
 
-echo "[$(date)] Verificacao de seguranca concluida com sucesso." | tee -a "$LOG"
-echo "Relatorio salvo em: $LOG"
+echo "[$(date)] Security check completed successfully." | tee -a "$LOG"
+echo "Report saved at: $LOG"
