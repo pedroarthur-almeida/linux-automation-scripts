@@ -14,3 +14,16 @@ Analisa diversos aspectos relacionados à **segurança e integridade** do sistem
 
 ## 📁 update-system
 Atualiza o sistema e remove pacotes órfãos, mantendo o sistema limpo e em dia com as últimas versões dos pacotes instalados.
+
+## ⏰ Como automatizar os scripts com Cron
+
+Você pode usar o **`cron`** (agendador de tarefas do Linux) para executar seus scripts automaticamente em horários e frequências definidas por você.
+
+### 🔧 Passo a passo para agendar seus scripts
+
+1. **Abra o agendador do `cron`:**
+
+   No terminal, digite:
+   ```bash
+   crontab -e
+
