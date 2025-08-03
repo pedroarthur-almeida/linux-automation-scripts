@@ -22,7 +22,7 @@ Caso queira automatizar a execução dos scripts, você pode utilizar o cron, qu
 
 Se você quer que seus scripts rodem **automaticamente**, sem precisar executá-los manualmente, pode usar o `cron`, o agendador de tarefas do Linux.
 
-Para que o script rode toda vez que o Ubuntu for iniciado:
+### Para que o script rode toda vez que o Ubuntu for iniciado:
 
 1. Abra o crontab:
 ```
@@ -33,14 +33,14 @@ crontab -e
 @reboot /caminho/completo/do/script.sh
 ```
 
-Para que o script seja executado a cada dois dias:
+### Para que o script seja executado a cada dois dias:
 
 1. No mesmo crontab -e, adicione:
 ```
 0 9 */2 * * /caminho/completo/do/script.sh
 ```
 
-Para ver o que já está agendado:
+### Para ver o que já está agendado:
 ```
 crontab -l
 ```
