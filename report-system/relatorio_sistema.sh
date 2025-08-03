@@ -1,25 +1,25 @@
 #!/bin/bash
 
-arquivo="relatorio_sistema.txt"
+arquivo="system_report.txt"
 
-echo "Relatorio do sistema gerado em: $(date)" > $arquivo
+echo "System report generated on: $(date)" > $arquivo
 
-echo -e "\nInformacoes do sistema" >> $arquivo
+echo -e "\nSystem information" >> $arquivo
 uname -a >> $arquivo
 
-echo -e "\nTempo ligado" >> $arquivo
+echo -e "\nUptime" >> $arquivo
 uptime -p >> $arquivo
 
-echo -e "\nUso do disco" >> $arquivo
+echo -e "\nDisk usage" >> $arquivo
 df -h >> $arquivo
 
-echo -e "\nUso da memoria RAM" >> $arquivo
+echo -e "\nRAM usage" >> $arquivo
 free -h >> $arquivo
 
-echo -e "\nTop 5 processos que mais usam CPU" >> $arquivo
+echo -e "\nTop 5 CPU consuming processes" >> $arquivo
 ps -eo pid,command,%cpu --sort=-%cpu | head -n 6 >> $arquivo
 
-echo -e "\nEnderecos IP" >> $arquivo
+echo -e "\nIP addresses" >> $arquivo
 hostname -I >> $arquivo
 
-echo -e "\nRelatorio gerado com sucesso no arquivo: $arquivo"
+echo -e "\nReport successfully generated in file: $arquivo"
