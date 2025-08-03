@@ -12,3 +12,7 @@ This script performs a basic system cleanup on Ubuntu. It is designed to free up
 
 Usage:
 Run the script with execution permissions:
+```
+chmod +x clean.sh
+./clean.sh
+```
