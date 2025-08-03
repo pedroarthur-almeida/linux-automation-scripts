@@ -1,18 +1,18 @@
 #!/bin/bash
 
-echo "Iniciando limpeza do sistema..."
+echo "Starting system cleanup..."
 
-echo "Limpando cache do APT..."
+echo "Cleaning APT cache..."
 sudo apt-get clean
 
-echo "Limpando cache do usuario (~/.cache)..."
+echo "Cleaning user cache (~/.cache)..."
 rm -rf ~/.cache/*
 
-echo "Limpando arquivos temporarios (/tmp e /var/tmp)..."
+echo "Cleaning temporary files (/tmp and /var/tmp)..."
 sudo rm -rf /tmp/*
 sudo rm -rf /var/tmp/*
 
-echo "Limpando miniaturas antigas (~/cache/thumbnails)..."
+echo "Cleaning old thumbnails (~/cache/thumbnails)..."
 rm -rf ~/.cache/thumbnails/*
 
-echo "Limpeza concluida com sucesso."
+echo "Cleanup completed successfully."
