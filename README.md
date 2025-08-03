@@ -22,3 +22,14 @@ Caso queira automatizar a execução dos scripts, você pode utilizar o cron, qu
 
 Se você quer que seus scripts rodem **automaticamente**, sem precisar executá-los manualmente, pode usar o `cron`, o agendador de tarefas do Linux.
 
+Para que o script rode toda vez que o Ubuntu for iniciado:
+
+1. Abra o crontab:
+```
+crontab -e
+```
+2. Adicione a linha abaixo ao final do arquivo:
+```
+@reboot /caminho/completo/do/script.sh
+```
+
