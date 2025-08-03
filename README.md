@@ -33,3 +33,16 @@ crontab -e
 @reboot /caminho/completo/do/script.sh
 ```
 
+Para que o script seja executado a cada dois dias:
+
+1. No mesmo crontab -e, adicione:
+```
+0 9 */2 * * /caminho/completo/do/script.sh
+```
+
+Para ver o que já está agendado:
+```
+crontab -l
+```
+
+
