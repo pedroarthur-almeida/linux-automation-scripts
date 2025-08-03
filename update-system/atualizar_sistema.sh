@@ -1,28 +1,28 @@
 #!/bin/bash
 
-# Script para atualizar e limpar o sistema.
+# Script to update and clean the system.
 
-echo "iniciando atualizacao do sistema..."
+echo "Starting system update..."
 
-# Aqui ocorre a atualizacao de repositorios e pacotes do sistema.
+# Here the system repositories and packages are updated.
 sudo apt update && sudo apt upgrade -y
 
-# Caso o usuario utilize snap.
+# In case the user uses snap.
 if command -v snap &> /dev/null; then
-	echo "Atualizando pacotes snap..."
+	echo "Updating snap packages..."
 	sudo snap refresh
 fi
 
-# Caso o usuario utilize flatpak.
+# In case the user uses flatpak.
 if command -v flatpak &> /dev/null; then
-	echo "Atualizando pacotes flatpak..."
+	echo "Updating flatpak packages..."
 	flatpak update -y
 fi
 
-# Aqui, os pacotes orfaos e desnecessarios sao removidos.
-echo "Removendo pacotes orfaos e realizando a limpeza do sistema..."
+# Here, orphaned and unnecessary packages are removed.
+echo "Removing orphaned packages and performing system cleanup..."
 sudo apt autoremove -y
 sudo apt autoclean
 sudo apt clean
 
-echo "Sistema atualizado e limpo com sucesso."
+echo "System successfully updated and cleaned."
