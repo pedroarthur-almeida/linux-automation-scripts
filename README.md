@@ -25,7 +25,7 @@ If you want to automate the execution of the scripts, you can use `cron`, which 
 If you want your scripts to run **automatically**, without needing to execute them manually, you can use `cron`, the Linux task scheduler.  
 Below are some usage examples.
 
-### ✅ To run the script every time Ubuntu starts:
+### To run the script every time Ubuntu starts:
 
 1. Open the crontab:
 ```
