@@ -15,15 +15,6 @@ Analisa diversos aspectos relacionados à **segurança e integridade** do sistem
 ## 📁 update-system
 Atualiza o sistema e remove pacotes órfãos, mantendo o sistema limpo e em dia com as últimas versões dos pacotes instalados.
 
-## ⏰ Como automatizar os scripts com Cron
-
-Você pode usar o **`cron`** (agendador de tarefas do Linux) para executar seus scripts automaticamente em horários e frequências definidas por você.
-
-### 🔧 Passo a passo para agendar seus scripts
-
-1. **Abra o agendador do `cron`:**
-
-   No terminal, digite:
-   ```bash
-   crontab -e
+# Usando o cron
+- Caso queira automatizar a execução dos scripts, você pode utilizar o cron, que é nativo do Linux Ubuntu. Com ele, é possível definir exatamente quando cada script deve ser executado — como ao iniciar o sistema, em dias específicos ou em horários programados — tornando todo o processo ainda mais eficiente, prático e sem necessidade de intervenção manual.
 
