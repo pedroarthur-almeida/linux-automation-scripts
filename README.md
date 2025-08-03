@@ -1,47 +1,49 @@
 # Linux-Automation-Scripts
-Esses scripts foram desenvolvidos para automatizar algumas tarefas simples no Linux Ubuntu. Eles têm como objetivo facilitar o uso do sistema tanto para pessoas que já utilizam Linux habitualmente quanto para iniciantes, simplificando atividades do     dia a dia.
 
-# Scripts disponíveis
+These scripts were developed to automate some simple tasks on Ubuntu Linux. Their goal is to make the system easier to use for both regular Linux users and beginners by simplifying everyday operations.
+
+# Available Scripts
 
 ## 📁 clean-system
-- Realiza uma limpeza no sistema, removendo arquivos e pacotes desnecessários para liberar espaço e melhorar o desempenho.
+- Performs a system cleanup by removing unnecessary files and packages to free up space and improve performance.
 
 ## 📁 report-system
-- Gera um relatório detalhado sobre diferentes áreas do sistema (como CPU, memória, disco etc.) e salva as informações em um arquivo `.txt`.
+- Generates a detailed report on different areas of the system (such as CPU, memory, disk, etc.) and saves the information in a `.txt` file.
 
 ## 📁 security-system
-- Analisa diversos aspectos relacionados à **segurança e integridade** do sistema, exibindo os resultados para o usuário de forma clara.
+- Analyzes various aspects related to **system security and integrity**, displaying the results clearly to the user.
 
 ## 📁 update-system
-- Atualiza o sistema e remove pacotes órfãos, mantendo o sistema limpo e em dia com as últimas versões dos pacotes instalados.
+- Updates the system and removes orphaned packages, keeping the system clean and up to date with the latest package versions.
 
-# Usando o cron
-Caso queira automatizar a execução dos scripts, você pode utilizar o cron, que é nativo do Linux Ubuntu. Com ele, é possível definir exatamente quando cada script deve ser executado, como ao iniciar o sistema, em dias específicos ou em horários programados, tornando todo o processo ainda mais eficiente, prático e sem necessidade de intervenção manual.
+# Using Cron
 
-## 🔁 Como automatizar os scripts no Ubuntu com CRON
+If you want to automate the execution of the scripts, you can use `cron`, which is built into Ubuntu Linux. With it, you can set exactly when each script should run — such as at system startup, on specific days, or at scheduled times — making the whole process more efficient, practical, and hands-free.
 
-Se você quer que seus scripts rodem **automaticamente**, sem precisar executá-los manualmente, pode usar o `cron`, o agendador de tarefas do Linux.
-Abaixo estao alguns exemplos de uso do cron.
+## 🔁 How to Automate Scripts on Ubuntu with Cron
 
-### Para que o script rode toda vez que o Ubuntu for iniciado:
+If you want your scripts to run **automatically**, without needing to execute them manually, you can use `cron`, the Linux task scheduler.  
+Below are some usage examples.
 
-1. Abra o crontab:
+### ✅ To run the script every time Ubuntu starts:
+
+1. Open the crontab:
 ```
 crontab -e
 ```
-2. Adicione a linha abaixo ao final do arquivo:
+2. Add the following line at the end of the file:
 ```
 @reboot /caminho/completo/do/script.sh
 ```
 
-### Para que o script seja executado a cada dois dias:
+### To run the script every two days:
 
-1. No mesmo crontab -e, adicione:
+1. In the same `crontab -e` file, add:
 ```
 0 9 */2 * * /caminho/completo/do/script.sh
 ```
 
-### Para ver o que já está agendado:
+### 🔍 To view scheduled tasks:
 ```
 crontab -l
 ```
